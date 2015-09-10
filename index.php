@@ -33,6 +33,12 @@
                     $perso1 = new Personnage();                     // Création de l'objet Personnage - Création d'une instance de la classe Personnage
                     $perso2 = new Personnage();                     // Création d'un 2ème personnage
                     
+                    $perso1->setForce(10);
+                    $perso1->setExperience(2);
+                    
+                    $perso2->setForce(90);
+                    $perso2->setExperience(58);
+                    
                     $perso1->parler();                              // Appel de la méthode test parler()
                     
                     $perso1->frapper($perso2);                      // Le personnage 1 frappe le personnage 2
