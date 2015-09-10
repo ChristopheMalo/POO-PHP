@@ -29,15 +29,15 @@
                 <h1 class="text-center">Exemples POO - PHP</h1>     
                 <p class="col-sm-12">
                     <?php
-                    include_once 'classes/Personnage.php';
-                    $perso1 = new Personnage();                     // Création de l'objet Personnage - Création d'une instance de la classe Personnage
-                    $perso2 = new Personnage();                     // Création d'un 2ème personnage
+                    require 'classes/Personnage.php';
+                    $perso1 = new Personnage(60, 0);                // Création de l'objet Personnage - Création d'une instance de la classe Personnage
+                    $perso2 = new Personnage(100, 10);              // Création d'un 2ème personnage
                     
-                    $perso1->setForce(10);
-                    $perso1->setExperience(2);
+                    //$perso1->setForce(10);
+                    //$perso1->setExperience(2);
                     
-                    $perso2->setForce(90);
-                    $perso2->setExperience(58);
+                    //$perso2->setForce(90);
+                    //$perso2->setExperience(58);
                     
                     $perso1->parler();                              // Appel de la méthode test parler()
                     
