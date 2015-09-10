@@ -8,7 +8,17 @@ class Personnage {
     private $_experience;      // Son expérience
     private $_degats;          // Ses dégâts
     
-    
+    /*
+     * Méthode de construction
+     */
+    public function __construct($force, $degats) {
+        echo 'Voici le constructeur !'; // Message de test
+        $this->setForce($force);        // Initialisation de la force
+        $this->setDegats($degats);      // Initialisation des dégats
+        $this->_experience = 1;         // Intialisation de l'expérience à 1
+    }
+
+
     /*
      * Methodes
      */
@@ -83,5 +93,14 @@ class Personnage {
         }
 
         $this->_experience = $experience;
+    }
+    
+    public function setDegats($degats) {
+        if (!is_int($degats)) { // S'il ne s'agit pas d'un nombre entier.
+            trigger_error('Le niveau de dégâts d\'un personnage doit être un nombre entier', E_USER_WARNING);
+            return;
+        }
+
+        $this->_degats = $degats;
     }
 }
