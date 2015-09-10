@@ -30,8 +30,18 @@
                 <p class="col-sm-12">
                     <?php
                     include_once 'classes/Personnage.php';
-                    $perso = new Personnage();                  // Création de l'objet Personnage - Création d'une instance de la classe Personnage
-                    $perso->parler();                           // Appel de la méthode test parler()
+                    $perso1 = new Personnage();                     // Création de l'objet Personnage - Création d'une instance de la classe Personnage
+                    $perso2 = new Personnage();                     // Création d'un 2ème personnage
+                    
+                    $perso1->parler();                              // Appel de la méthode test parler()
+                    
+                    $perso1->frapper($perso2);                      // Le personnage 1 frappe le personnage 2
+                    $perso1->gagnerExperience();                    // Le personnage 1 gagne de l'expérience
+                    
+                    $perso2->frapper($perso1);                      // Le personnage 2 frappe le personnage 1
+                    $perso2->gagnerExperience();                    // Le personnage 2 gagne de l'expérience
+                    
+                    $perso1->afficherExperience();
                     ?>
                 </p>
             </section>
