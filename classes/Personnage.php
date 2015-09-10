@@ -12,7 +12,7 @@ class Personnage {
      * Méthode de construction
      */
     public function __construct($force, $degats) {
-        echo 'Voici le constructeur !'; // Message de test
+        //echo 'Voici le constructeur !'; // Message de test
         $this->setForce($force);        // Initialisation de la force
         $this->setDegats($degats);      // Initialisation des dégats
         $this->_experience = 1;         // Intialisation de l'expérience à 1
@@ -23,9 +23,9 @@ class Personnage {
      * Methodes
      */
     // Simple méthode test affichage texte
-    public function parler() {
-        echo 'Je suis le personnage 1, personnage virtuel RD2D.<br> La force est avec moi !<br>';
-    }
+    //public function parler() {
+    //    echo 'Je suis le personnage 1, personnage virtuel RD2D.<br> La force est avec moi !<br>';
+    //}
     
     // Méthode de gestion du déplacement du personnage
     public function deplacer() {
