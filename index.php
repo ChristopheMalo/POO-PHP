@@ -41,13 +41,29 @@
                     
                     $perso1->parler();                              // Appel de la méthode test parler()
                     
+                    
+                    echo 'Avant le combat :<br>';
+                    echo 'Le personnage 1 a ' . $perso1->experience() . ' d\'expérience<br>';
+                    echo 'Le personnage 2 a ' . $perso2->experience() . ' d\'expérience<br>';
+                    echo 'Le personnage 1 a ' . $perso1->force() . ' de force et le personnage 2 a ' . $perso2->force() . ' de force.<br>';
+                   
+                    
+                    echo 'Le combat démarre...<br>';
+                    echo 'Le personnage 1 frappe le personnage 2...<br>';
+                    echo 'Le personnage 1 gagne de l\'expérience...<br>';
+                    
                     $perso1->frapper($perso2);                      // Le personnage 1 frappe le personnage 2
                     $perso1->gagnerExperience();                    // Le personnage 1 gagne de l'expérience
+                    
+                    echo 'Le personnage 2 frappe le personnage 1...<br>';
+                    echo 'Le personnage 2 gagne de l\'expérience...<br>';
                     
                     $perso2->frapper($perso1);                      // Le personnage 2 frappe le personnage 1
                     $perso2->gagnerExperience();                    // Le personnage 2 gagne de l'expérience
                     
-                    $perso1->afficherExperience();                  // Affiche l'expérience
+                    echo 'Après le combat :<br>';
+                    echo 'Le personnage 1 a ' . $perso1->experience() . ' d\'expérience et le personnage 2 a ' . $perso2->experience() . ' d\'expérience.<br />';
+                    echo 'Le personnage 1 a ' . $perso1->degats() . ' de dégâts contrairement au personnage 2 qui a ' . $perso2->degats() . ' de dégâts.<br>';
                     ?>
                 </p>
             </section>
