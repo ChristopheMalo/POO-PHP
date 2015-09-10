@@ -3,17 +3,18 @@ class Personnage {
     /*
      * Attributs
      */
-    private $_force         = 20;           // La force du personnage
-    private $_localisation;                 // Sa localisation
-    private $_experience    = 0;            // Son expérience
-    private $_degats        = 0;            // Ses dégâts
+    private $_force;           // La force du personnage
+    private $_localisation;    // Sa localisation
+    private $_experience;      // Son expérience
+    private $_degats;          // Ses dégâts
+    
     
     /*
      * Methodes
      */
     // Simple méthode test affichage texte
     public function parler() {
-        echo 'Je suis un personnage virtuel RD2D !<br>';
+        echo 'Je suis le personnage 1, personnage virtuel RD2D.<br> La force est avec moi !<br>';
     }
     
     // Méthode de gestion du déplacement du personnage
@@ -28,13 +29,9 @@ class Personnage {
     
     // Methode de gestion de l'expérience du personnage
     public function gagnerExperience() {
-        $this->_experience = $this->_experience ++;  // Incrémente de la force
+        $this->_experience ++;  // Incrémente l'expérience
     }
     
-    // Methode de gestion de l'affichage de l'expérience d'un personnage
-    public function afficherExperience() {
-        echo $this->_experience;
-    }
     
     /*
      * Méthodes Accesseurs (Getters) - Pour récupérer la valeur d'un attribut
@@ -53,6 +50,7 @@ class Personnage {
     public function degats() {
         return $this->_degats;
     }
+    
     
     /*
      * Méthodes Mutateurs - Pour modifier la valeur des attributs
