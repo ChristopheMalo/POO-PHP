@@ -41,7 +41,7 @@
                     $perso2->frapper($perso1);                      // Le personnage 2 frappe le personnage 1
                     $perso2->gagnerExperience();                    // Le personnage 2 gagne de l'expérience
                     
-                    $perso1->afficherExperience();
+                    $perso1->afficherExperience();                  // Affiche l'expérience
                     ?>
                 </p>
             </section>
