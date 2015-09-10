@@ -13,7 +13,7 @@ class Personnage {
          
     }
     
-    public function frapper($persoAFrapper) {             // Méthode de gestion de la frappe selon la force
+    public function frapper(Personnage $persoAFrapper) {             // Méthode de gestion de la frappe selon la force
         $persoAFrapper->_degats += $this->_force;
     }
     
