@@ -5,6 +5,10 @@ class Personnage {
     private $_experience;                   // Son expérience
     private $_degats;                       // Ses dégâts
     
+    public function parler() {              // Simple méthode test affichage texte
+        echo 'Je suis un personnage virtuel RD2D !';
+    }
+    
     public function deplacer() {            // Méthode de gestion du déplacement du personnage
          
     }
