@@ -40,8 +40,10 @@
                     
                     spl_autoload_register('chargerMaClasse');
                     
-                    $perso1 = new Personnage(60, 0);                // Création de l'objet Personnage - Création d'une instance de la classe Personnage
-                    $perso2 = new Personnage(100, 10);              // Création d'un 2ème personnage
+                    //$perso1 = new Personnage(60, 0);                      // Création de l'objet Personnage - Création d'une instance de la classe Personnage
+                    //$perso2 = new Personnage(100, 10);                    // Création d'un 2ème personnage
+                    $perso1 = new Personnage(Personnage::FORCE_MOYENNE, 0); // Création de l'objet personnage gràace à une constante
+                    $perso2 = new Personnage(Personnage::FORCE_GRANDE, 10); // Création d'un 2ème personnage
                     
                     //$perso1->setForce(10);
                     //$perso1->setExperience(2);

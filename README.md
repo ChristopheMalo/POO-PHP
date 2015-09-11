@@ -8,3 +8,4 @@ Exemples d'utilisation de la POO - Programmation Orientée Objet - en PHP
 - Utilisation des setters, des getters
 - Développement de méthodes personnalisées
 - Auto-chargement de classes
+- Les constantes de classe
