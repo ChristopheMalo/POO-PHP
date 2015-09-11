@@ -10,3 +10,4 @@ Exemples d'utilisation de la POO - Programmation Orientée Objet - en PHP
 - Auto-chargement de classes
 - Les constantes de classe
 - Les méthodes statiques pour agir sur une classe et non sur un objet
+- Les attributs statiques qui appartiennent à une classe et non à un objet (tous les objets auront accès à cet attribut statique et cet attribut aura la même valeur pour tous les objets)

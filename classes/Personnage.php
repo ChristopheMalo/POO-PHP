@@ -9,6 +9,11 @@ class Personnage {
     private $_degats;          // Ses dégâts
     
     /*
+     * Attributs / Variables statiques
+     */
+    private static $_leTexteStatique = '<strong>Attribut statique :</strong> Je suis ton père petit Padawan !!!<br>';
+
+    /*
      * Déclaration des constantes de Force
      */
     const FORCE_PETITE  = 20;
@@ -120,6 +125,7 @@ class Personnage {
      * Méthodes statiques - Pour agir sur une classe et non sur un objet
      */
     public static function parler() {
-        echo '<strong>Méthode staitique :</strong> Je suis ton père !!!<br>';
+        //echo '<strong>Méthode staitique :</strong> Je suis ton père !!!<br>';
+        echo self::$_leTexteStatique; // Appel de l'attribut statique
     }
 }
