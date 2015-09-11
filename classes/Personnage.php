@@ -114,4 +114,12 @@ class Personnage {
 
         $this->_degats = $degats;
     }
+    
+    
+    /*
+     * Méthodes statiques - Pour agir sur une classe et non sur un objet
+     */
+    public static function parler() {
+        echo '<strong>Méthode staitique :</strong> Je suis ton père !!!<br>';
+    }
 }

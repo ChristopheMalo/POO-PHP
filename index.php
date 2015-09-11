@@ -51,8 +51,8 @@
                     //$perso2->setForce(90);
                     //$perso2->setExperience(58);
                     
-                    //$perso1->parler();                              // Appel de la méthode test parler()
-                    
+                    //$perso1->parler();    // Appel de la méthode test parler()
+                    Personnage::parler();   // Appel de la méthode statique parler()
                     
                     echo '<strong>Avant le combat :</strong><br>';
                     echo 'Le personnage 1 a ' . $perso1->experience() . ' d\'expérience<br>';
