@@ -26,13 +26,17 @@
         <section class="container">
 
             <section class="row">
-                <h1 class="text-center">Exemples POO - PHP</h1>     
+                <h1 class="text-center">Exemples POO - PHP</h1>
+                <h2>Personnage</h2>
                 <p class="col-sm-12">
                     <?php
                     /*
                      * require 'classes/Personnage.php';             // Inclure la classe
                      * OU
-                     * Fonction auto-chargement
+                     * Fonction auto-chargement de l'ensemble des classes du projet
+                     * 
+                     * La fonction charge toutes les classes nécessaire au projet
+                     * si les classes sont placées dans le dossier classes
                      */
                     function chargerMaClasse($classe) {
                         require 'classes/' . $classe . '.php';
@@ -76,6 +80,17 @@
                     echo '<strong>Après le combat :</strong><br>';
                     echo 'Le personnage 1 a ' . $perso1->experience() . ' d\'expérience et le personnage 2 a ' . $perso2->experience() . ' d\'expérience.<br />';
                     echo 'Le personnage 1 a ' . $perso1->degats() . ' de dégâts contrairement au personnage 2 qui a ' . $perso2->degats() . ' de dégâts.<br>';
+                    ?>
+                </p>
+                <h2>Compteur</h2>
+                <p>
+                    <?php
+                    // Instanciation de 3 tests compteur
+                    $test1 = new Compteur;
+                    $test2 = new Compteur;
+                    $test3 = new Compteur;
+                    
+                    echo 'La classe est instanciée : ' . Compteur::getCompteur() . ' fois.';
                     ?>
                 </p>
             </section>
