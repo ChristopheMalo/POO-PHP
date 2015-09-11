@@ -11,7 +11,7 @@ class Personnage {
     /*
      * Attributs / Variables statiques
      */
-    private static $_leTexteStatique = '<strong>Attribut statique :</strong> Je suis ton père petit Padawan !!!<br>';
+    private static $_leTexte = '<strong>Attribut statique :</strong> Je suis ton père petit Padawan !!!<br>';
 
     /*
      * Déclaration des constantes de Force
@@ -126,6 +126,6 @@ class Personnage {
      */
     public static function parler() {
         //echo '<strong>Méthode staitique :</strong> Je suis ton père !!!<br>';
-        echo self::$_leTexteStatique; // Appel de l'attribut statique
+        echo self::$_leTexte; // Appel de l'attribut statique
     }
 }
