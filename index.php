@@ -93,6 +93,30 @@
                     echo 'La classe est instanciée : ' . Compteur::getCompteur() . ' fois.';
                     ?>
                 </p>
+                <h2>Manipuler les données d'une BDD</h2>
+                <p>
+                    <?php
+                    include_once 'configuration/configurationPDO.php';
+                    $req = $bdd->query('SELECT id, nom, forcePerso, degats, niveau, experience
+                                          FROM PersonnagesTable');
+                    
+                    // Afficher chaque donnée des personnages dans un array
+                    while ($datas = $req->fetch(PDO::FETCH_ASSOC)) {
+                        $perso = new PersonnageTable($datas);
+                        
+                        echo '<pre>';
+                            print_r($datas);
+                            print_r($perso);
+                        echo '</pre>';
+                        
+                        echo $perso->getNom() . ' a ' .
+                             $perso->getForcePerso() . ' de force, ' .
+                             $perso->getDegats() . ' de dégâts, ' .
+                             $perso->getExperience() . ' d\'expérience et est au niveau ' .
+                             $perso->getNiveau();
+                    }
+                    ?>
+                </p>
             </section>
 
         </section>

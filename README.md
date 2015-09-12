@@ -13,3 +13,4 @@ Exemples d'utilisation de la POO - Programmation Orientée Objet - en PHP
 - Les attributs statiques qui appartiennent à une classe et non à un objet (tous les objets auront accès à cet attribut statique et cet attribut aura la même valeur pour tous les objets)
 - self représente la classe et $this repérésente l'objet
 - Manipuler des données stockées en BDD
+- L'hydratation
