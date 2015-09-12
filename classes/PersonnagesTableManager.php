@@ -33,16 +33,18 @@ class PersonnagesTableManager {
         
         $req->bindValue(':nom',         $perso->getNom(),           PDO::PARAM_STR);
         $req->bindValue(':forcePerso',  $perso->getForcePerso(),    PDO::PARAM_INT);
-        $req->bindValue(':degats',      $perso->getDegats(),           PDO::PARAM_INT);
+        $req->bindValue(':degats',      $perso->getDegats(),        PDO::PARAM_INT);
         $req->bindValue(':niveau',      $perso->getNiveau(),        PDO::PARAM_INT);
         $req->bindValue(':experience',  $perso->getExperience(),    PDO::PARAM_INT);
         
         $req->execute();
+        
+        $req->closeCursor();
     }
     
     // Methode de suppression d'un personnage dans la BDD
     public function deletePersonnage(PersonnageTable $perso) {
-        
+        $this->_bdd->exec('DELETE FROM PersonnagesTable WHERE id = ' . $perso->getId());
     }
     
     //Methode de selection d'un personnage avec clause WHERE
@@ -87,13 +89,16 @@ class PersonnagesTableManager {
                                     ');
         
         $req->bindValue(':forcePerso',  $perso->getForcePerso(),    PDO::PARAM_INT);
-        $req->bindValue(':degats',      $perso->getDegats(),           PDO::PARAM_INT);
+        $req->bindValue(':degats',      $perso->getDegats(),        PDO::PARAM_INT);
         $req->bindValue(':niveau',      $perso->getNiveau(),        PDO::PARAM_INT);
         $req->bindValue(':experience',  $perso->getExperience(),    PDO::PARAM_INT);
         $req->bindValue(':id',          $perso->getId(),            PDO::PARAM_INT);
         
         $req->execute();
+        
+        $req->closeCursor();
     }
+    
     
     /*
      * Méthodes Mutateurs (Setters) - Pour modifier la valeur des attributs

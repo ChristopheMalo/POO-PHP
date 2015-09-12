@@ -127,6 +127,7 @@
                     $bdd = $db->bdd();
                     $manager = new PersonnagesTableManager($bdd);
                     
+                    
                     // Création de personnage pour tester la methode addPersonnage()
                     $perso1 = new PersonnageTable([
                         'nom'           => 'YodaBoss',
@@ -136,11 +137,14 @@
                         'experience'    => 1
                     ]);
                     
+                    
                     // Tests des méthodes du Manager
-                    //$manager->addPersonnage($perso1);
+                    $manager->addPersonnage($perso1);
                     $manager->getPersonnage(2);
                     $manager->getListPersonnages();
                     
+                    
+                    // Création d'une instance de PersonnageTable pour tester updatePersonnage
                     $persoToUpdate = new PersonnageTable([
                         'forcePerso'    => 10,
                         'degats'        => 20,
@@ -151,6 +155,15 @@
                     
                     $manager->updatePersonnage($persoToUpdate);
                     
+                    
+                    
+                    // Création d'une instance de PersonnageTable pour tester deletePersonnage
+                    $perso3 = new PersonnageTable(['id' => 12]);
+                    
+                    $manager->deletePersonnage($perso3);
+                    
+                    
+                    // Affichage test résultat
                     echo '<h3>getPersonnage id = 2</h3>';
                     echo '<pre>';
                         print_r($manager->getPersonnage(2));
@@ -159,8 +172,7 @@
                     echo '<h3>getListPersonnages</h3>';
                     echo '<pre>';
                         print_r($manager->getListPersonnages());
-                    echo '</pre>';
-                    
+                    echo '</pre>';                    
                     
                     $bdd = null;
                     ?>
