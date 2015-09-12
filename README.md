@@ -14,3 +14,4 @@ Exemples d'utilisation de la POO - Programmation Orientée Objet - en PHP
 - self représente la classe et $this repérésente l'objet
 - Manipuler des données stockées en BDD
 - L'hydratation
+- Gérer la BDD grâce à une classe Manager
