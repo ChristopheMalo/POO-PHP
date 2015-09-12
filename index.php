@@ -113,8 +113,46 @@
                              $perso->getForcePerso() . ' de force, ' .
                              $perso->getDegats() . ' de dégâts, ' .
                              $perso->getExperience() . ' d\'expérience et est au niveau ' .
-                             $perso->getNiveau();
+                             $perso->getNiveau() . '<br><br><br>';
                     }
+                    
+                    $req->closeCursor();        // Ferme le curseur, permettant à la requête d'être de nouveau exécutée                             
+                    $bdd = null;                // Fermeture de la connexion à la base
+                    ?>
+                </p>
+                <h2>Manipuler les données d'une BDD grâce à une classe Manager</h2>
+                <p>
+                    <?php
+                    $db = new ConfigurationPDO(); // Utilisation d'une classe pour la connexion à la BDD
+                    $bdd = $db->bdd();
+                    $manager = new PersonnagesTableManager($bdd);
+                    
+                    // Création de personnage pour tester la methode addPersonnage()
+                    $perso1 = new PersonnageTable([
+                        'nom'           => 'YodaBoss',
+                        'forcePerso'    => 5,
+                        'degats'        => 0,
+                        'niveau'        => 1,
+                        'experience'    => 1
+                    ]);
+                    
+                    // Tests des méthodes du Manager
+                    $manager->addPersonnage($perso1);
+                    $manager->getPersonnage(2);
+                    $manager->getListPersonnages();
+                    
+                    echo '<h3>getPersonnage id = 2</h3>';
+                    echo '<pre>';
+                        print_r($manager->getPersonnage(2));
+                    echo '</pre>';
+                    
+                    echo '<h3>getListPersonnages</h3>';
+                    echo '<pre>';
+                        print_r($manager->getListPersonnages());
+                    echo '</pre>';
+                    
+                    
+                    $bdd = null;
                     ?>
                 </p>
             </section>
