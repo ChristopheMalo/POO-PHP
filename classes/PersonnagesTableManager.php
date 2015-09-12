@@ -29,11 +29,11 @@ class PersonnagesTableManager {
                                                  degats     = :degats,
                                                  niveau     = :niveau,
                                                  experience = :experience
-                                     ');
+                                    ');
         
         $req->bindValue(':nom',         $perso->getNom(),           PDO::PARAM_STR);
         $req->bindValue(':forcePerso',  $perso->getForcePerso(),    PDO::PARAM_INT);
-        $req->bindValue(':degats',      $perso->getNom(),           PDO::PARAM_INT);
+        $req->bindValue(':degats',      $perso->getDegats(),           PDO::PARAM_INT);
         $req->bindValue(':niveau',      $perso->getNiveau(),        PDO::PARAM_INT);
         $req->bindValue(':experience',  $perso->getExperience(),    PDO::PARAM_INT);
         
@@ -77,8 +77,22 @@ class PersonnagesTableManager {
     }
     
     // Methode de mise à jour d'un personnage dans la BDD
-    public function updatePersonnage(Personnage $perso) {
+    public function updatePersonnage(PersonnageTable $perso) {
+        $req = $this->_bdd->prepare('UPDATE PersonnagesTable
+                                        SET forcePerso = :forcePerso,
+                                            degats     = :degats,
+                                            niveau     = :niveau,
+                                            experience = :experience
+                                      WHERE id         = :id
+                                    ');
         
+        $req->bindValue(':forcePerso',  $perso->getForcePerso(),    PDO::PARAM_INT);
+        $req->bindValue(':degats',      $perso->getDegats(),           PDO::PARAM_INT);
+        $req->bindValue(':niveau',      $perso->getNiveau(),        PDO::PARAM_INT);
+        $req->bindValue(':experience',  $perso->getExperience(),    PDO::PARAM_INT);
+        $req->bindValue(':id',          $perso->getId(),            PDO::PARAM_INT);
+        
+        $req->execute();
     }
     
     /*

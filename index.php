@@ -137,9 +137,19 @@
                     ]);
                     
                     // Tests des méthodes du Manager
-                    $manager->addPersonnage($perso1);
+                    //$manager->addPersonnage($perso1);
                     $manager->getPersonnage(2);
                     $manager->getListPersonnages();
+                    
+                    $persoToUpdate = new PersonnageTable([
+                        'forcePerso'    => 10,
+                        'degats'        => 20,
+                        'niveau'        => 2,
+                        'experience'    => 20,
+                        'id'            => 6
+                    ]);
+                    
+                    $manager->updatePersonnage($persoToUpdate);
                     
                     echo '<h3>getPersonnage id = 2</h3>';
                     echo '<pre>';
