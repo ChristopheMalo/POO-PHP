@@ -17,9 +17,11 @@ class PersonnagesTableManager {
     /*
      * Methodes CRUD
      */
-    // Methode d'insertion d'un personnage dans la BDD
-    // Pour éviter le message d'erreur Strict Standards: Only variables should be passed by reference
-    
+     
+    /*  Methode d'insertion d'un personnage dans la BDD
+     *  Pour éviter le message d'erreur Strict Standards: Only variables should be passed by reference
+     *  il faut utiliser bindValue et non bind Param
+     */
     public function addPersonnage(PersonnageTable $perso) {
         $req = $this->_bdd->prepare('INSERT INTO PersonnagesTable
                                              SET nom        = :nom,
