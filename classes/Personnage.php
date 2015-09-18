@@ -129,3 +129,23 @@ class Personnage {
         echo self::$_leTexte; // Appel de l'attribut statique
     }
 }
+
+
+/*
+ * Héritage
+ */
+class Magicien extends Personnage {
+    private $_magie; // Puissance de sort de magie sur 100
+    
+    public function lancerUnSort($perso) {
+        $perso->recevoirDegats($this->_magie);
+    }
+}
+
+class Guerrier extends Personnage {
+    
+}
+
+class Brute extends Personnage {
+    
+}

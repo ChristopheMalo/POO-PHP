@@ -16,3 +16,4 @@ Exemples d'utilisation de la POO - Programmation Orientée Objet - en PHP
 - L'hydratation
 - Gérer la BDD grâce à une classe Manager
 - Création d'une classe pour la connexion à la BDD (La classe par mesure de sécurité n'est pas envoyée sur github)
+- L'héritage en POO
