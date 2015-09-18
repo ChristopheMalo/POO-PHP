@@ -166,11 +166,13 @@
                         static::whoIs();
                       }
 
-                      public function lancerTest() {
+                      public function lancerTest()
+                      {
                         $oneChild = new Parent();
                       }
 
-                      public static function whoIs() {
+                      public static function whoIs()
+                      {
                         echo __CLASS__;
                       }
                     }
