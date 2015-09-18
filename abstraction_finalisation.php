@@ -5,11 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <meta name="description" content="Exemples POO en PHP - Résolution statique à la volée - basés sur le MOOC POO - PHP OpenClassrooms et PHP Manual - Adaptation Christophe Malo">
+        <meta name="description" content="Exemples POO en PHP - Abstraction et finalisation - basés sur le MOOC POO - PHP OpenClassrooms et PHP Manual - Adaptation Christophe Malo">
         <meta name="keywords" content="POO, PHP, Bootstrap, Résolution statique">
         <meta name="author" content="Christophe Malo">
             
-        <title>POO en PHP - Résolution statique à la volée</title>
+        <title>POO en PHP - Abstraction et finalisation</title>
 
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 
@@ -25,161 +25,64 @@
         ================================================== -->
         <div class="container">
             <section class="row">
-                <h1 class="text-center">POO en PHP - Résolution statique à la volée</h1>
-                <h2>Exemple 1 - Self</h2>
+                <h1 class="text-center">POO en PHP - Abstraction et finalisation</h1>
+                <h2>Exemple 1 - Abstraction - Classe et Méthode</h2>
                 <p class="col-sm-12">
                     <?php
                     // Exemple 1
-                    class A {
-                        public static function whoIs() {
-                            echo __CLASS__;
-                        }
-
-                        public static function lancerTest() {
-                            self::whoIs();
+                    abstract class A { // Classe A abstraite
+                        abstract public function A1($param);
+                        
+                        public function A2() {
+                            // Instructions
                         }
                     }
 
-                    class B extends A {
-                        public static function whoIs() {
-                            echo __CLASS__;
+                    class B extends A { // Classe B héritant de A
+                        public function A1($param) {
+                            // Instruction
                         }
                     }
                     
-                    B::lancerTest(); // Return A
+                    $classeB = new B; // Pas d'erreur, la classe B n'est pas abstraite
+                    // $classeA = new A; // Erreur fatale car la classe A est abstraire et ne peut-être instanciée
                     
                     ?>
                 </p>
                 
                 
-                <h2>Exemple 2 - Static</h2>
+                <h2>Exemple 2 - Finalisation - Classe et Méthode</h2>
                 <p class="col-sm-12">
                     <?php
                     // Exemple 2
-                    class C {
-                        public static function whoIs() {
-                            echo __CLASS__;
-                        }
-
-                        public static function lancerTest() {
-                            static::whoIs();
-                        }
-                    }
-
-                    class D extends C {
-                        public static function whoIs() {
-                            echo __CLASS__;
-                        }
-                    }
-
-                    D::lancerTest(); // Return D
-                    
-                    ?>
-                </p>
-                
-                
-                <h2>Exemple 3</h2>
-                <p class="col-sm-12">
-                    <?php
-                    // Exemple 3
-                    class E {
-                        public static function whoIs() {
-                            echo __CLASS__;
-                        }
-                    }
-
-                    class F extends E {
-                        public static function whoIs() {
-                            echo __CLASS__;
+                    abstract class C {
+                        public function A1($param) {
+                            // Instructions
                         }
                         
-                        public static function lancerTest() {
-                            parent::whoIs();
-                        }
-                    }
-                    
-                    class G extends F {
-                        public static function whoIs() {
-                            echo __CLASS__;
-                        }
-                    }
-
-                    G::lancerTest(); // Return E
-                    
-                    ?>
-                </p>
-                
-                
-                <h2>Exemple 4</h2>
-                <p class="col-sm-12">
-                    <?php
-                    // Exemple 4
-                    class H {
-                        public static function whoIs() {
-                            echo __CLASS__;
+                        // Empêche l'accès aux classes filles
+                        final public function A2() {
+                            // Instructions
                         }
                         
-                        public static function callWhoIs() {
-                            static::whoIs();
-                        }
                     }
-
-                    class I extends H {
-                        public static function whoIs() {
-                            echo __CLASS__;
+                    
+                    final class D extends C {
+                        public function A1($param) {
+                            // Instructions
                         }
                         
-                        public static function lancerTest() {
-                            parent::callWhoIs();
+                        // Erreur fatale car cette méthode est finale dasn la classe parente
+                        public function A2() {
+                            // Instructions
                         }
                     }
                     
-                    class J extends I {
-                        public static function whoIs() {
-                            echo __CLASS__;
-                        }
+                    // Génère une erreur fatale car la classe E ne peut hériter de la class D car D est final
+                    class E extends D {
+                        
                     }
-
-                    J::lancerTest(); // Return J
                     
-                    ?>
-                </p>
-                
-                
-                <h2>Exemple 5</h2>
-                <p class="col-sm-12">
-                    <?php
-                    // Exemple 5
-                    class myParent {
-                      public function __construct() {
-                        static::whoIs();
-                      }
-
-                      public static function whoIs() {
-                        echo __CLASS__;
-                      }
-                    }
-
-                    class myChild extends myParent
-                    {
-                      public function __construct() {
-                        static::whoIs();
-                      }
-
-                      public function lancerTest()
-                      {
-                        $oneChild = new Parent();
-                      }
-
-                      public static function whoIs()
-                      {
-                        echo __CLASS__;
-                      }
-                    }
-
-                    $oneChild = new myChild;
-                    $oneChild->lancerTest();
-                    // Return myChildmyParent
                     ?>
                 </p>
             </section>
