@@ -72,7 +72,7 @@
                             // Instructions
                         }
                         
-                        // Erreur fatale car cette méthode est finale dasn la classe parente
+                        // Erreur fatale car cette méthode est finale dans la classe parente
                         public function A2() {
                             // Instructions
                         }
