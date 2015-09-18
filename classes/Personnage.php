@@ -140,6 +140,15 @@ class Magicien extends Personnage {
     public function lancerUnSort($perso) {
         $perso->recevoirDegats($this->_magie);
     }
+    
+    //Redéfinir la méthode gagnerExperience
+    public function gagnerExperience() {
+        parent::gagnerExperience(); // appel de la methode gagnerExperience() de la classe parente
+        
+        if ($this->_magie < 100) {
+            $this->_magie += 10;
+        }
+    }
 }
 
 class Guerrier extends Personnage {
