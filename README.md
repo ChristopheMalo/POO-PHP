@@ -1,7 +1,7 @@
 # POO-PHP
 Exemples d'utilisation de la POO - Programmation Orientée Objet - en PHP
 
-## Descriptif
+## Les bases de la POO
 - Création d'une classe
 - Utilisation des attributs
 - Utilisation de la méthode __construct
@@ -19,3 +19,4 @@ Exemples d'utilisation de la POO - Programmation Orientée Objet - en PHP
 - L'héritage en POO
 - Résolution statique à la volée
 - Contrainte d'abstraction et de finalisation
+- Quelques méthodes magiques
