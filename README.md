@@ -20,3 +20,6 @@ Exemples d'utilisation de la POO - Programmation Orientée Objet - en PHP
 - Résolution statique à la volée
 - Contrainte d'abstraction et de finalisation
 - Quelques méthodes magiques
+
+## La POO avancée
+- Les objets en profondeur (Clone, compraison et parcours d'objet)
