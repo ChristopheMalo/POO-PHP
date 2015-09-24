@@ -24,3 +24,4 @@ Exemples d'utilisation de la POO - Programmation Orientée Objet - en PHP
 ## La POO avancée
 - Les objets en profondeur (Clone, compraison et parcours d'objet)
 - Les interfaces (Création, implémentation, constante, héritage)
+- Les interfaces prédéfinies (Iterator)
