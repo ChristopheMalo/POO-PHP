@@ -46,11 +46,13 @@
                         
                     class My_Class implements InterfaceName1, InterfaceName2
                     {
-                        public function functionName1($param) {
+                        public function functionName1($param)
+                        {
                             echo 'Toto<br>';
                         }
                         
-                        public function functionName2($param) {
+                        public function functionName2($param)
+                        {
                             echo 'Tutu<br>';
                         }
                     }
@@ -87,15 +89,18 @@
                     }
                     
                     class My_class2 implements InterfaceName4 {
-                        public function functionName1() {
+                        public function functionName1()
+                        {
                             echo 'Implements via Extends<br>';
                         }
                         
-                        public function functionName1B() {
+                        public function functionName1B()
+                        {
                             echo 'Héritage multiple<br>';
                         }
                         
-                        public function functionName2() {
+                        public function functionName2()
+                        {
                             echo 'Function perso directe dans My_Class2<br>';
                         }
                     }
