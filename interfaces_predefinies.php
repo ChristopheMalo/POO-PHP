@@ -169,6 +169,120 @@
                     }
                     ?>
                 </p>
+                
+                <h2>Interface ArrayAccess</h2>
+                <p class="col-sm-12">
+                    <strong><em>Cette interface introduit la gestion des crochets et des clés à la suite de l'objet. L'interface est alors accessible comme un vrai objet.</em></strong><br>
+                    <?php
+                    // Exemple 2
+                    class Test_ArrayAccess implements SeekableIterator, ArrayAccess
+                    {
+                        private $_positionInArray = 0;
+                        private $_array = ['Element 1', 'Element 2', 'Element 3', 'Element 4', 'Element 5'];
+                        
+                        /*
+                         * Méthode optionnelle
+                         */
+                        public function __construct()
+                        {
+                            $this->_positionInArray = 0;
+                        }
+                        
+                        /*
+                         * Méthodes nécessaires pour l'interface Iterator
+                         * SeekableIterator hérite de Iterator
+                         */
+                        public function current()
+                        {
+                            return $this->_array[$this->_positionInArray];
+                        }
+                        
+                        public function key()
+                        {
+                            return $this->_positionInArray;
+                        }
+                        
+                        public function next()
+                        {
+                            ++$this->_positionInArray;
+                        }
+                        
+                        public function rewind()
+                        {
+                            $this->_positionInArray = 0;
+                        }
+                        
+                        public function valid()
+                        {
+                            return isset($this->_array[$this->_positionInArray]);
+                        }
+                        
+                        /*
+                         * Méthode nécessaire pour l'interface SeekableIterator
+                         */
+                        public function seek($position)
+                        {                        
+                            if (!isset($this->_array[$position])) {
+                                throw new OutOfBoundsException('La position (' . $position . ') n\'existe pas');
+                            }
+                            
+                            echo 'Position courante (' . $position . ') = ';
+                            $this->_positionInArray = $position;
+                        }
+                        
+                        /*
+                         * Méthodes nécessaires pour l'interface ArrayAccess
+                         */
+                        // Vérification de l'existence d'un offset
+                        public function offsetExists($offset) {
+                            return isset($this->_array[$offset]);
+                        }
+                        
+                        // Retourne la valeur de l'offset
+                        public function offsetGet($offset) {
+                            return $this->_array[$offset];
+                        }
+                        
+                        // Assigne une valeur à l'offset spécifié
+                        public function offsetSet($offset, $value) {
+                            $this->_array[$offset] = $value;
+                        }
+                        
+                        // Supprime un offset
+                        public function offsetUnset($offset) {
+                            unset($this->_array[$offset]);
+                        }
+                    }
+                    
+                    $obj = new Test_ArrayAccess;
+                    echo 'Parcours de l\'objet :<br>';
+                    foreach ($obj as $key => $value) {
+                        echo $key . ' => ' . $value . '<br>';
+                    }
+                    
+                    echo '<br>Positionnement du curseur sur l\'élément 3 :<br>';
+                    $obj->seek(2);
+                    echo $obj->current();
+                    
+                    echo '<br>';
+                    
+                    echo '<br>Affichage de l\'élément 4 : ' . $obj[3] . '<br>' ;
+                    echo 'Modification de l\'élément 4 en cours...<br>';
+                    $obj[3] = 'Texte modifié de l\'élément 4';
+                    echo 'Nouvelle valeur de l\'élement 4 : ' . $obj[3] . '<br>';
+                    
+                    echo '<br>';
+                    
+                    echo 'Destruction du 5ème élément en cours...<br>';
+                    unset($obj[4]);
+                    if (isset($obj[4])) {
+                        echo '$obj[4] existe';
+                    } else {
+                        echo '$obj[4] est détruit';
+                    }
+                    
+                    ?>
+                </p>
             </section>
         </div>
     </body>
