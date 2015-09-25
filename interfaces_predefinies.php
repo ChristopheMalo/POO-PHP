@@ -28,6 +28,7 @@
                 <h1 class="text-center">POO avancée en PHP - Les interfaces prédéfinies</h1>
                 <h2>Interface Iterator</h2>
                 <p class="col-sm-12">
+                    <strong><em>Cette interface permet de modifier le comportement de l'objet parcouru.</em></strong><br>
                     <?php
                     // Exemple 1
                     class Test_Iterator implements Iterator
@@ -87,8 +88,9 @@
                 
                 <h2>Interface SeekableIterator</h2>
                 <p class="col-sm-12">
+                    <strong><em>Cette interface hérite de l'interface Itérator et possède une méthode supplémentaire (seek) qui permet d'atteindre une position précise.</em></strong><br>
                     <?php
-                    // Exemple 1
+                    // Exemple 2
                     class Test_SeekableIterator implements SeekableIterator
                     {
                         private $_positionInArray = 0;
