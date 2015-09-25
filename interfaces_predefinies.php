@@ -26,6 +26,8 @@
         <div class="container">
             <section class="row">
                 <h1 class="text-center">POO avancée en PHP - Les interfaces prédéfinies</h1>
+                <!-- Interface Iterator
+                ================================================== -->
                 <h2>Interface Iterator</h2>
                 <p class="col-sm-12">
                     <strong><em>Cette interface permet de modifier le comportement de l'objet parcouru.</em></strong><br>
@@ -86,6 +88,8 @@
                     ?>
                 </p>
                 
+                <!-- Interface SeekableIterator
+                ================================================== -->
                 <h2>Interface SeekableIterator</h2>
                 <p class="col-sm-12">
                     <strong><em>Cette interface hérite de l'interface Itérator et possède une méthode supplémentaire (seek) qui permet d'atteindre une position précise.</em></strong><br>
@@ -170,11 +174,13 @@
                     ?>
                 </p>
                 
+                <!-- Interface ArrayAccess
+                ================================================== -->
                 <h2>Interface ArrayAccess</h2>
                 <p class="col-sm-12">
                     <strong><em>Cette interface introduit la gestion des crochets et des clés à la suite de l'objet. L'interface est alors accessible comme un vrai objet.</em></strong><br>
                     <?php
-                    // Exemple 2
+                    // Exemple 3
                     class Test_ArrayAccess implements SeekableIterator, ArrayAccess
                     {
                         private $_positionInArray = 0;
@@ -282,6 +288,142 @@
                     }
                     
                     ?>
+                </p>
+                
+                <!-- Interface Countable
+                ================================================== -->
+                <h2>Interface Countable</h2>
+                <p class="col-sm-12">
+                    <strong><em>Avec cette interface, la classe se rapproche du comportement d'un tableau. Une seule méthode pour cette interface : count</em></strong><br>
+                    <?php
+                    // Exemple 3
+                    class Test_Countable implements SeekableIterator, ArrayAccess, Countable
+                    {
+                        private $_positionInArray = 0;
+                        private $_array = ['Element 1', 'Element 2', 'Element 3', 'Element 4', 'Element 5'];
+                        
+                        /*
+                         * Méthode optionnelle
+                         */
+                        public function __construct()
+                        {
+                            $this->_positionInArray = 0;
+                        }
+                        
+                        /*
+                         * Méthodes nécessaires pour l'interface Iterator
+                         * SeekableIterator hérite de Iterator
+                         */
+                        public function current()
+                        {
+                            return $this->_array[$this->_positionInArray];
+                        }
+                        
+                        public function key()
+                        {
+                            return $this->_positionInArray;
+                        }
+                        
+                        public function next()
+                        {
+                            ++$this->_positionInArray;
+                        }
+                        
+                        public function rewind()
+                        {
+                            $this->_positionInArray = 0;
+                        }
+                        
+                        public function valid()
+                        {
+                            return isset($this->_array[$this->_positionInArray]);
+                        }
+                        
+                        /*
+                         * Méthode nécessaire pour l'interface SeekableIterator
+                         */
+                        public function seek($position)
+                        {                        
+                            if (!isset($this->_array[$position])) {
+                                throw new OutOfBoundsException('La position (' . $position . ') n\'existe pas');
+                            }
+                            
+                            echo 'Position courante (' . $position . ') = ';
+                            $this->_positionInArray = $position;
+                        }
+                        
+                        /*
+                         * Méthodes nécessaires pour l'interface ArrayAccess
+                         */
+                        // Vérification de l'existence d'un offset
+                        public function offsetExists($offset) {
+                            return isset($this->_array[$offset]);
+                        }
+                        
+                        // Retourne la valeur de l'offset
+                        public function offsetGet($offset) {
+                            return $this->_array[$offset];
+                        }
+                        
+                        // Assigne une valeur à l'offset spécifié
+                        public function offsetSet($offset, $value) {
+                            $this->_array[$offset] = $value;
+                        }
+                        
+                        // Supprime un offset
+                        public function offsetUnset($offset) {
+                            unset($this->_array[$offset]);
+                        }
+                        
+                        /*
+                         * Méthode pour l'interface Countable
+                         */
+                        public function count() {
+                            return count($this->_array);
+                        }
+                    }
+                    
+                    $obj = new Test_Countable;
+                    echo 'Parcours de l\'objet :<br>';
+                    foreach ($obj as $key => $value) {
+                        echo $key . ' => ' . $value . '<br>';
+                    }
+                    
+                    echo '<br>Positionnement du curseur sur l\'élément 3 :<br>';
+                    $obj->seek(2);
+                    echo $obj->current();
+                    
+                    echo '<br>';
+                    
+                    echo '<br>Affichage de l\'élément 4 : ' . $obj[3] . '<br>' ;
+                    echo 'Modification de l\'élément 4 en cours...<br>';
+                    $obj[3] = 'Texte modifié de l\'élément 4';
+                    echo 'Nouvelle valeur de l\'élement 4 : ' . $obj[3] . '<br>';
+                    
+                    echo '<br>';
+                    
+                    echo 'Le tableau comporte ' . count($obj) . ' entrées.<br>';
+                    
+                    echo '<br>';
+                    
+                    echo 'Destruction du 5ème élément en cours...<br>';
+                    unset($obj[4]);
+                    if (isset($obj[4])) {
+                        echo '$obj[4] exist.<br>';
+                    } else {
+                        echo '$obj[4] est détruit.<br>';
+                    }
+                    
+                    echo '<br>';
+                    
+                    echo 'Après la destruction, le tableau comporte ' . count($obj) . ' entrées.<br>';
+                    
+                    ?>
+                </p>
+                
+                <h2>Conclusion</h2>
+                <p><strong>Cet exercice montre l'utilisation de 4 interfaces / itérateurs pour travailler avec des "objets type tableaux".<br>
+                        Pour simplifier cette utilisation des interfaces, un itérateur SPL, ArrayIterator existe. Il implémente les 4 interfaces vues dans cette partie.</strong>
                 </p>
             </section>
         </div>
