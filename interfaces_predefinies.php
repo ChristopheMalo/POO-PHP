@@ -28,7 +28,6 @@
                 <h1 class="text-center">POO avancée en PHP - Les interfaces prédéfinies</h1>
                 <h2>Interface Iterator</h2>
                 <p class="col-sm-12">
-                    
                     <?php
                     // Exemple 1
                     class Test_Iterator implements Iterator
@@ -36,23 +35,43 @@
                         private $_positionInArray = 0;
                         private $_array = ['position 1', 'Position 2', 'Position 3', 'Position 4', 'Position 5'];
                         
-                        public function current() {
-                            return $this->_array[$this->_positionInArray];
-                        }
-                        
-                        public function key() {
-                            return $this->_positionInArray;
-                        }
-                        
-                        public function next() {
-                            ++$this->_positionInArray;
-                        }
-                        
-                        public function rewind() {
+                        /*
+                         * Méthode optionnelle
+                         */
+                        public function __construct() {
                             $this->_positionInArray = 0;
                         }
                         
-                        public function valid() {
+                        /*
+                         * Méthodes nécessaires pour l'interface Iterator
+                         */
+                        // Retourne l'élément courant
+                        public function current()
+                        {
+                            return $this->_array[$this->_positionInArray];
+                        }
+                        
+                        // Retourne la clé de l'élément courant
+                        public function key()
+                        {
+                            return $this->_positionInArray;
+                        }
+                        
+                        // Déplace l'iterator vers l'élément suivant
+                        public function next()
+                        {
+                            ++$this->_positionInArray;
+                        }
+                        
+                        // Remet l'iterator à la position 0 (premier élément)
+                        public function rewind()
+                        {
+                            $this->_positionInArray = 0;
+                        }
+                        
+                        // Vérifie si la position courante est valide
+                        public function valid()
+                        {
                             return isset($this->_array[$this->_positionInArray]);
                         }
                     }
@@ -62,6 +81,89 @@
                     foreach ($obj as $key => $value) {
                         echo $key, ' => ', $value, '<br>';
       
+                    }
+                    ?>
+                </p>
+                
+                <h2>Interface SeekableIterator</h2>
+                <p class="col-sm-12">
+                    <?php
+                    // Exemple 1
+                    class Test_SeekableIterator implements SeekableIterator
+                    {
+                        private $_positionInArray = 0;
+                        private $_array = ['Element 1', 'Element 2', 'Element 3', 'Element 4', 'Element 5'];
+                        
+                        /*
+                         * Méthode optionnelle
+                         */
+                        public function __construct()
+                        {
+                            $this->_positionInArray = 0;
+                        }
+                        
+                        /*
+                         * Méthodes nécessaires pour l'interface Iterator
+                         */
+                        public function current()
+                        {
+                            return $this->_array[$this->_positionInArray];
+                        }
+                        
+                        public function key()
+                        {
+                            return $this->_positionInArray;
+                        }
+                        
+                        public function next()
+                        {
+                            ++$this->_positionInArray;
+                        }
+                        
+                        public function rewind()
+                        {
+                            $this->_positionInArray = 0;
+                        }
+                        
+                        public function valid()
+                        {
+                            return isset($this->_array[$this->_positionInArray]);
+                        }
+                        
+                        /*
+                         * Méthode nécessaire pour l'interface SeekableIterator
+                         */
+                        public function seek($position)
+                        {                        
+                            if (!isset($this->_array[$position])) {
+                                throw new OutOfBoundsException('La position (' . $position . ') n\'existe pas');
+                            }
+                            
+                            echo 'Position courante (' . $position . ') = ';
+                            $this->_positionInArray = $position;
+                        }
+                    }
+                    
+                    try {
+                        $obj = new Test_SeekableIterator;
+                    
+//                        foreach ($obj as $key => $value) {
+//                            echo $key, ' => ', $value, '<br>';
+//                        }
+                        
+                        echo $obj->current() . '<br>';
+                        
+                        $obj->seek(2);
+                        echo $obj->current() . '<br>';
+                        
+                        $obj->seek(1);
+                        echo $obj->current() . '<br>';
+                        
+                        $obj->seek(10);
+                        
+                        
+                    } catch (OutOfBoundsException $expression) {
+                        echo $expression->getMessage();
                     }
                     ?>
                 </p>
