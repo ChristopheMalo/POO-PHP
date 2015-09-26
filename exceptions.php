@@ -67,7 +67,7 @@
                 <h2>Gestions des erreurs - Les exceptions personnalisées</h2>
                 <p class="col-sm-12">
                     <?php
-                    // Exemple 1
+                    // Exemple 2
                     class PersonnalException extends Exception
                     {
                         public function __construct($message, $code = 0)
@@ -116,7 +116,7 @@
                 <h2>Gestions des erreurs - Les exceptions personnalisées - Plusieurs Catch</h2>
                 <p class="col-sm-12">
                     <?php
-                    // Exemple 1
+                    // Exemple 3
                     class PersonnalException2 extends Exception
                     {
                         public function __construct($message, $code = 0)
