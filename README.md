@@ -27,3 +27,4 @@ Exemples d'utilisation de la POO - Programmation Orientée Objet - en PHP
 - Les interfaces prédéfinies (Iterator, SeekableIterator, ArrayAccess, Countable)
 - Les exceptions (Lancer, Attraper, Héritage)
 - Les traits
+- UML : modélisation diagramme
