@@ -28,3 +28,4 @@ Exemples d'utilisation de la POO - Programmation Orientée Objet - en PHP
 - Les exceptions (Lancer, Attraper, Héritage)
 - Les traits
 - UML : modélisation diagramme
+- Les design patterns
