@@ -29,3 +29,4 @@ Exemples d'utilisation de la POO - Programmation Orientée Objet - en PHP
 - Les traits
 - UML : modélisation diagramme
 - Les design patterns
+- Les générateurs
