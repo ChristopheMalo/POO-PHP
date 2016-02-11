@@ -28,7 +28,7 @@
                 <h1 class="text-center">POO avancée en PHP - Les générateurs</h1>
                 <p>Un générateur est une façon simple et rapide d'implémenter un itérateur (résouddre des problèmes de performance ou de code à rallonge).</p>
                 
-                <!-- Pattern Factory
+                <!-- Les générateurs
                 ================================================== -->
                 <h2>Notion de base</h2>
                 <p>Étude de cas - Parcourir les lignes d'un fichier</p>
